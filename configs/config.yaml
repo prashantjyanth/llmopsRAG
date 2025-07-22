@@ -9,7 +9,6 @@ files:
   results_output: "./results/eval_results.jsonl"
   best_prompt_dir: "./best_prompt/"
   best_model_file: "./best_model/model.txt"
-
 watch_dirs:
   - "./configs/"
   - "./prompts/"

@@ -12,7 +12,7 @@ def score_with_llm(generated: str, expected: str, api_key: str) -> float:
     try:
         client = ChatGroq(
             api_key=GROQ_API_KEY,
-            model_name="mixtral-8x7b-32768"  # or "llama3-8b-8192"
+            model_name="meta-llama/llama-4-scout-17b-16e-instruct"  # or "llama3-8b-8192"
         )
 
         messages = [

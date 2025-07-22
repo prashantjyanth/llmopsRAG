@@ -6,5 +6,3 @@ pandas
 langchain-community
 langgraph
 dotenv
-
-

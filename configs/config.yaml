@@ -2,6 +2,8 @@
 models:
   - llama-3.3-70b-versatile
   - mistral-saba-24b
+  - deepseek-r1-distill-llama-70b
+  
 
 files:
   test_data: testing_data/prompts.csv
@@ -11,7 +13,7 @@ files:
   best_model_file: best_model/model.txt
 
 watch_dirs:
-
+  - configs/
   - prompts/
   - testing_data/
 

@@ -9,10 +9,11 @@ from utils.config_lodder import Config
 from utils.time_decoretor import timeit
 from utils.scorellm import score_with_llm
 from utils.logger import CustomLogger
+import glob
 import dotenv
 dotenv.load_dotenv()
 
-cfg = Config().get()
+cfg = Config("configs/config.yaml").as_dict()
 logger = CustomLogger(name="evaluator").get_logger()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
@@ -24,12 +25,12 @@ def evaluate_prompts():
     best_model = None
     all_results = []
 
-    for prompt_name in cfg["prompt_candidates"]:
-        prompt_path = os.path.join(cfg["files"]["prompt_dir"], f"{prompt_name}.json")
-        with open(prompt_path, "r", encoding="utf-8") as f:
+    for prompt_name in glob.glob(cfg["files"]["prompt_dir"] + "/*.json"):
+        # prompt_path = os.path.join(cfg["files"]["prompt_dir"], f"{prompt_name}")
+        with open(prompt_name, "r", encoding="utf-8") as f:
             prompt_template = json.load(f)["template"]
 
-        for model_name in cfg["model_candidates"]:
+        for model_name in cfg["models"]:
             full_prompt_id = f"{prompt_name}_{model_name}"
             total_score = 0
             results = []
@@ -75,12 +76,18 @@ def evaluate_prompts():
 
     # Save best results
     if best_prompt and best_model:
+        if os.path.exists(cfg["files"]["best_prompt_dir"]):
+            shutil.rmtree(cfg["files"]["best_prompt_dir"])
+        if os.path.exists(cfg["files"]["best_model_file"]):
+            os.remove(cfg["files"]["best_model_file"])
         os.makedirs(cfg["files"]["best_prompt_dir"], exist_ok=True)
         os.makedirs(os.path.dirname(cfg["files"]["best_model_file"]), exist_ok=True)
+        # print(os.path.join(cfg["files"]["prompt_dir"], f"{best_prompt}"))
+        # print(os.path.join(cfg["files"]["best_prompt_dir"], "BEST_PROMPT.json"))
 
         shutil.copyfile(
-            os.path.join(cfg["files"]["prompt_dir"], f"{best_prompt}.json"),
-            os.path.join(cfg["files"]["best_prompt_dir"], f"{best_prompt}.json")
+            best_prompt,
+            os.path.join(cfg["files"]["best_prompt_dir"], "BEST_PROMPT.json")
         )
 
         with open(cfg["files"]["best_model_file"], "w", encoding="utf-8") as f:

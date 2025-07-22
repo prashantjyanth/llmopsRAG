@@ -1,4 +1,4 @@
-
+version: '3.9'
 
 services:
   llmops-watcher:
@@ -7,6 +7,7 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    working_dir: /app
     volumes:
       - ./prompts:/app/prompts
       - ./testing_data:/app/testing_data
@@ -14,4 +15,4 @@ services:
       - ./best_model:/app/best_model
       - ./configs:/app/configs
       - ./logs:/app/logs
-    command: python main.py
+    command: python core/watcher.py

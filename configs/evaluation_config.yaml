@@ -2,8 +2,7 @@
 models:
   - llama-3.3-70b-versatile
   - mistral-saba-24b
-api_keys:
-  GROQ_API_KEY: ""
+
 files:
   test_data: testing_data/prompts.csv
   prompt_dir: prompts/
@@ -15,8 +14,6 @@ watch_dirs:
 
   - prompts/
   - testing_data/
-
-
 
 
 

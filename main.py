@@ -3,4 +3,8 @@
 from core.watcher import start_watching
 
 if __name__ == "__main__":
-    start_watching()
+    try:
+        start_watching()
+    except Exception as e:
+        print(f"[❌] Watcher failed: {e}")
+    # start_watching()

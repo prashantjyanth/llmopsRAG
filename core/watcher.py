@@ -39,5 +39,6 @@ def start_watching():
         while True:
             time.sleep(1)
     except KeyboardInterrupt:
+        
         observer.stop()
     observer.join()

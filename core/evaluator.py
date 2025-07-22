@@ -1,14 +1,20 @@
 import os
 import json
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import shutil
 import pandas as pd
 from utils.config_lodder import Config
 from utils.time_decoretor import timeit
-from utils.getscores import score_with_llm
+from utils.scorellm import score_with_llm
 from utils.logger import CustomLogger
+import dotenv
+dotenv.load_dotenv()
 
 cfg = Config().get()
 logger = CustomLogger(name="evaluator").get_logger()
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 @timeit
 def evaluate_prompts():
@@ -39,12 +45,12 @@ def evaluate_prompts():
                     from langchain_groq import ChatGroq
                     from langchain.schema import HumanMessage
                     client = ChatGroq(
-                        api_key=cfg["api_keys"]["GROQ_API_KEY"],
+                        api_key=GROQ_API_KEY,
                         model_name=model_name
                     )
                     response = client([HumanMessage(content=formatted_prompt)])
                     generated = response.content.strip()
-                    score = score_with_llm(generated, expected, cfg["api_keys"]["GROQ_API_KEY"])
+                    score = score_with_llm(generated, expected, GROQ_API_KEY)
                 except Exception as e:
                     generated = f"[ERROR] {e}"
                     score = 0.0

@@ -1,29 +1,30 @@
-name: Build & Run Python App in Docker Compose
+name: 🐳 Build & Run LLMOps App
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build-and-run:
+  run-docker:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout code
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v3
 
-      - name: 🐳 Set up Docker
+      - name: 🐳 Set Up Docker
         uses: docker/setup-buildx-action@v3
 
-      - name: 🔐 Create .env file
+      - name: 🔐 Write .env from Secret
         run: echo "${{ secrets.ENV_FILE }}" > .env
 
-      - name: 🧼 Docker Compose Down
+      - name: 🧼 Clean up previous containers
         run: docker-compose down --volumes --remove-orphans
 
-      - name: 🛠️ Docker Compose Build & Run
+      - name: 🚀 Build and Run using Docker Compose
         run: docker-compose up --build --abort-on-container-exit
 
-      - name: 📦 Cleanup
+      - name: 🧹 Cleanup
         if: always()
         run: docker-compose down --volumes --remove-orphans

@@ -3,7 +3,6 @@ print("👀 Starting watcher...")
 
 import time
 import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler

@@ -1,3 +1,10 @@
 watchdog
 mlflow
 pandas
+langchain_groq
+pandas
+langchain-community
+langgraph
+dotenv
+
+

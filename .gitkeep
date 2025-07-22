@@ -1,6 +1,6 @@
-testing_data/.gitkeep
-prompts/.gitkeep
-configs/.gitkeep
-logs/.gitkeep
-best_prompt/.gitkeep
-best_model/.gitkeep
+touch testing_data/.gitkeep
+touch prompts/.gitkeep
+touch configs/.gitkeep
+touch logs/.gitkeep
+touch best_model/.gitkeep
+touch best_prompt/.gitkeep

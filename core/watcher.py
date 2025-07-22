@@ -3,7 +3,7 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from dotenv import load_dotenv
-from configs.config import Config
+from utils.config_lodder import Config
 from core.evaluator import evaluate_prompts
 
 load_dotenv()

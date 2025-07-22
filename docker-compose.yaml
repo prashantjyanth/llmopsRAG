@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   llmops-watcher:
     build: .
@@ -7,10 +9,10 @@ services:
       - .env
     working_dir: /app
     volumes:
-      - ./prompts:prompts
-      - ./testing_data:testing_data
-      - ./best_prompt:best_prompt
-      - ./best_model:best_model
-      - ./configs:configs
-      - ./logs:logs
+      - ./prompts:/app/prompts
+      - ./testing_data:/app/testing_data
+      - ./best_prompt:/app/best_prompt
+      - ./best_model:/app/best_model
+      - ./configs:/app/configs
+      - ./logs:/app/logs
     command: python main.py

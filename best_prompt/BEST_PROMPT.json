@@ -1,4 +1,0 @@
-{
-  "template": "You are a helpful assistant.\nUser: {{input}}\nAssistant:"
-}
-

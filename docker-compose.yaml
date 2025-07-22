@@ -1,3 +1,5 @@
+
+
 services:
   llmops-watcher:
     build: .
@@ -12,5 +14,4 @@ services:
       - ./best_model:/app/best_model
       - ./configs:/app/configs
       - ./logs:/app/logs
-    command: python core/watcher.py
-    
+    command: python main.py

@@ -69,3 +69,78 @@
 [2025-07-22 22:10:18] [INFO] [🔍] prompts\prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.667
 [2025-07-22 22:10:18] [INFO] 
 🏆 Best: Prompt = prompts\prompt1.json, Model = deepseek-r1-distill-llama-70b, Score = 0.667
+[2025-07-22 23:36:57] [INFO] [🔍] ./prompts\prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.467
+[2025-07-22 23:36:58] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:36:58] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:36:59] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:36:59] [INFO] [🔍] ./prompts\prompt1.json_mistral-saba-24b → Avg Score: 0.000
+[2025-07-22 23:37:05] [INFO] [🔍] ./prompts\prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.533
+[2025-07-22 23:37:05] [INFO] 
+🏆 Best: Prompt = ./prompts\prompt1.json, Model = deepseek-r1-distill-llama-70b, Score = 0.533
+[2025-07-22 23:38:41] [INFO] [🔍] ./prompts\prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.333
+[2025-07-22 23:38:42] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:38:42] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:38:43] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:38:43] [INFO] [🔍] ./prompts\prompt1.json_mistral-saba-24b → Avg Score: 0.000
+[2025-07-22 23:38:49] [INFO] [🔍] ./prompts\prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.333
+[2025-07-22 23:38:49] [INFO] 
+🏆 Best: Prompt = ./prompts\prompt1.json, Model = llama-3.3-70b-versatile, Score = 0.333
+[2025-07-22 23:39:08] [INFO] [🔍] ./prompts\prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.300
+[2025-07-22 23:39:09] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:39:09] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:39:10] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:39:10] [INFO] [🔍] ./prompts\prompt1.json_mistral-saba-24b → Avg Score: 0.000
+[2025-07-22 23:39:18] [INFO] [🔍] ./prompts\prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.533
+[2025-07-22 23:39:18] [INFO] 
+🏆 Best: Prompt = ./prompts\prompt1.json, Model = deepseek-r1-distill-llama-70b, Score = 0.533
+[2025-07-22 23:42:31] [INFO] [🔍] ./prompts\prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.483
+[2025-07-22 23:42:32] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:42:32] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:42:33] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:42:33] [INFO] [🔍] ./prompts\prompt1.json_mistral-saba-24b → Avg Score: 0.000
+[2025-07-22 23:42:47] [INFO] [🔍] ./prompts\prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.533
+[2025-07-22 23:42:47] [INFO] 
+🏆 Best: Prompt = ./prompts\prompt1.json, Model = deepseek-r1-distill-llama-70b, Score = 0.533
+[2025-07-22 23:42:56] [INFO] [🔍] ./prompts\prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.267
+[2025-07-22 23:42:57] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:42:59] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:43:00] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:43:00] [INFO] [🔍] ./prompts\prompt1.json_mistral-saba-24b → Avg Score: 0.000
+[2025-07-22 23:43:12] [INFO] [🔍] ./prompts\prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.267
+[2025-07-22 23:43:12] [INFO] 
+🏆 Best: Prompt = ./prompts\prompt1.json, Model = llama-3.3-70b-versatile, Score = 0.267
+[2025-07-22 23:47:23] [INFO] [🔍] ./prompts\prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.467
+[2025-07-22 23:47:23] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:47:24] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:47:24] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:47:24] [INFO] [🔍] ./prompts\prompt1.json_mistral-saba-24b → Avg Score: 0.000
+[2025-07-22 23:47:37] [INFO] [🔍] ./prompts\prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.333
+[2025-07-22 23:47:37] [INFO] 
+🏆 Best: Prompt = ./prompts\prompt1.json, Model = llama-3.3-70b-versatile, Score = 0.467
+[2025-07-22 23:48:37] [INFO] [🔍] ./prompts\prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.567
+[2025-07-22 23:48:38] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:48:38] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:48:39] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:48:39] [INFO] [🔍] ./prompts\prompt1.json_mistral-saba-24b → Avg Score: 0.000
+[2025-07-22 23:48:52] [INFO] [🔍] ./prompts\prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.333
+[2025-07-22 23:48:52] [INFO] 
+🏆 Best: Prompt = ./prompts\prompt1.json, Model = llama-3.3-70b-versatile, Score = 0.567
+[2025-07-22 23:49:00] [INFO] [🔍] ./prompts\prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.400
+[2025-07-22 23:49:01] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:49:03] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:49:04] [ERROR] Error for prompt './prompts\prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 23:49:04] [INFO] [🔍] ./prompts\prompt1.json_mistral-saba-24b → Avg Score: 0.000
+[2025-07-22 23:49:19] [INFO] [🔍] ./prompts\prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.267
+[2025-07-22 23:49:19] [INFO] 
+🏆 Best: Prompt = ./prompts\prompt1.json, Model = llama-3.3-70b-versatile, Score = 0.400
+[2025-07-22 18:23:55] [INFO] [🔍] ./prompts/prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.467
+[2025-07-22 18:23:55] [ERROR] Error for prompt './prompts/prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 18:23:55] [ERROR] Error for prompt './prompts/prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 18:23:55] [ERROR] Error for prompt './prompts/prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 18:23:55] [INFO] [🔍] ./prompts/prompt1.json_mistral-saba-24b → Avg Score: 0.000
+[2025-07-22 18:24:14] [INFO] [🔍] ./prompts/prompt1.json_deepseek-r1-distill-llama-70b → Avg Score: 0.133
+[2025-07-22 18:24:16] [INFO] [🔍] ./prompts/prompt1.json_llama-3.3-70b-versatile → Avg Score: 0.467
+[2025-07-22 18:24:16] [ERROR] Error for prompt './prompts/prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 18:24:16] [ERROR] Error for prompt './prompts/prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 18:24:16] [ERROR] Error for prompt './prompts/prompt1.json_mistral-saba-24b': Error code: 400 - {'error': {'message': 'The model `mistral-saba-24b` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=mistral-saba-24b', 'type': 'invalid_request_error', 'code': 'model_terms_required'}}
+[2025-07-22 18:24:16] [INFO] [🔍] ./prompts/prompt1.json_mistral-saba-24b → Avg Score: 0.000

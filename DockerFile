@@ -20,4 +20,4 @@ RUN mkdir -p best_prompt best_model
 ENV PYTHONUNBUFFERED=1
 
 # Run the watcher script from the core directory
-CMD ["python", "core/watcher.py"]
+CMD ["python", "main.py"]

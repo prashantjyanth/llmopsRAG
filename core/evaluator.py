@@ -39,12 +39,12 @@ def evaluate_prompts():
                     from langchain_groq import ChatGroq
                     from langchain.schema import HumanMessage
                     client = ChatGroq(
-                        api_key=os.getenv("GROQ_API_KEY"),
+                        api_key=cfg["api_keys"]["GROQ_API_KEY"],
                         model_name=model_name
                     )
                     response = client([HumanMessage(content=formatted_prompt)])
                     generated = response.content.strip()
-                    score = score_with_llm(generated, expected)
+                    score = score_with_llm(generated, expected, cfg["api_keys"]["GROQ_API_KEY"])
                 except Exception as e:
                     generated = f"[ERROR] {e}"
                     score = 0.0

@@ -6,16 +6,16 @@ models:
   
 
 files:
-  test_data: testing_data/prompts.csv
-  prompt_dir: prompts/
-  results_output: results/eval_results.jsonl
-  best_prompt_dir: best_prompt/
-  best_model_file: best_model/model.txt
+  test_data: ./testing_data/prompts.csv
+  prompt_dir: ./prompts/
+  results_output: ./results/eval_results.jsonl
+  best_prompt_dir: ./best_prompt/
+  best_model_file: ./best_model/model.txt
 
 watch_dirs:
-  - configs/
-  - prompts/
-  - testing_data/
+  - ./configs/
+  - ./prompts/
+  - ./testing_data/
 
 
 

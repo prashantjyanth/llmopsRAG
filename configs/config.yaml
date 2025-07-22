@@ -10,7 +10,6 @@ files:
   best_prompt_dir: "./best_prompt/"
   best_model_file: "./best_model/model.txt"
 
-
 watch_dirs:
   - "./configs/"
   - "./prompts/"

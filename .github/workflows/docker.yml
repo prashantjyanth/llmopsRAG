@@ -9,14 +9,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Docker
+      - name: 🐳 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build Docker image
+      - name: 🔧 Build Docker image
         run: docker build -t my-python-app .
 
-      - name: Run Python script inside container
-        run: docker run my-python-app
+      - name: 🔐 Create .env file from secrets (optional)
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env
+
+      - name: 🚀 Run Python script inside container
+        run: |
+          docker run --rm \
+            --env-file .env \
+            --name llmops-watcher \
+            # Optional volume mounts if needed:
+            -v ${{ github.workspace }}/prompts:/app/prompts \
+            -v ${{ github.workspace }}/configs:/app/configs \
+            -v ${{ github.workspace }}/logs:/app/logs \
+            -v ${{ github.workspace }}/best_prompt:/app/best_prompt \
+            -v ${{ github.workspace }}/best_model:/app/best_model \
+            -v ${{ github.workspace }}/testing_data:/app/testing_data \
+            my-python-app \
+            python main.py

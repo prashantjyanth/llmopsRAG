@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  llmops-watcher:
+    build: .
+    container_name: llmops-watcher
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./prompts:/app/prompts
+      - ./testing_data:/app/testing_data
+      - ./best_prompt:/app/best_prompt
+      - ./best_model:/app/best_model
+      - ./configs:/app/configs
+    command: ["python", "core/watcher.py"]

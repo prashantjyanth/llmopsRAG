@@ -7,10 +7,10 @@ services:
       - .env
     working_dir: /app
     volumes:
-      - ./prompts:/app/prompts
-      - ./testing_data:/app/testing_data
-      - ./best_prompt:/app/best_prompt
-      - ./best_model:/app/best_model
-      - ./configs:/app/configs
-      - ./logs:/app/logs
+      - ./prompts:prompts
+      - ./testing_data:testing_data
+      - ./best_prompt:best_prompt
+      - ./best_model:best_model
+      - ./configs:configs
+      - ./logs:logs
     command: python main.py

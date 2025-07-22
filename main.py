@@ -1,11 +1,6 @@
-import time
+# main.py
 
-def main():
-    while True:
-        print("Running main loop...")
-        time.sleep(1)
-        
-        print("Still running...")
+from watcher import start_watching
 
 if __name__ == "__main__":
-    main()
+    start_watching()

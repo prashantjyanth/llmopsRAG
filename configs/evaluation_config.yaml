@@ -1,0 +1,19 @@
+
+models:
+  - llama-3.3-70b-versatile
+  - mistral-saba-24b
+
+files:
+  test_data: testing_data/prompts.csv
+  prompt_dir: prompts/
+  results_output: results/eval_results.jsonl
+  best_prompt_dir: best_prompt/
+  best_model_file: best_model/model.txt
+
+watch_dirs:
+
+  - prompts/
+  - testing_data/
+
+
+

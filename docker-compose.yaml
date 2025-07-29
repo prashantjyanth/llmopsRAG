@@ -1,3 +1,4 @@
+version: '3.8'
 
 services:
   llmops-watcher:
@@ -8,10 +9,11 @@ services:
       - .env
     working_dir: /app
     volumes:
-      - ./prompts:/app/prompts
-      - ./testing_data:/app/testing_data
-      - ./best_prompt:/app/best_prompt
-      - ./best_model:/app/best_model
-      - ./configs:/app/configs
-      - ./logs:/app/logs
+      - ${PWD}/prompts:/app/prompts
+      - ${PWD}/testing_data:/app/testing_data
+      - ${PWD}/best_prompt:/app/best_prompt
+      - ${PWD}/best_model:/app/best_model
+      - ${PWD}/configs:/app/configs
+      - ${PWD}/logs:/app/logs
     command: python main.py
+    # NO privileged: true or user/group settings here

@@ -6,33 +6,48 @@ on:
 
 jobs:
   build-and-run:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Use windows runner as you said
 
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: 📂 Create folders with .gitkeep if missing
-        shell: bash
+      - name: 📂 Create folders with .gitkeep if missing (PowerShell)
+        shell: pwsh
         run: |
-          for d in testing_data prompts configs logs best_model best_prompt; do
-            mkdir -p "$d"
-            touch "$d/.gitkeep"
-          done
+          $dirs = @('testing_data', 'prompts', 'configs', 'logs', 'best_model', 'best_prompt')
+          foreach ($d in $dirs) {
+            if (-not (Test-Path $d)) {
+              New-Item -ItemType Directory -Path $d | Out-Null
+            }
+            New-Item -ItemType File -Path "$d/.gitkeep" -Force | Out-Null
+          }
 
-      - name: 🧪 Debug - Check folders before mount
-        shell: bash
+      - name: 🧪 Debug - Check folders before mount (PowerShell)
+        shell: pwsh
         run: |
-          echo "Checking folder contents:"
-          for d in testing_data prompts configs logs best_model best_prompt; do
-            echo "--- $d ---"
-            ls -la "$d"
-          done
+          Write-Host "Checking folder contents:"
+          $dirs = @('testing_data', 'prompts', 'configs', 'logs', 'best_model', 'best_prompt')
+          foreach ($d in $dirs) {
+            Write-Host "--- $d ---"
+            Get-ChildItem $d | Format-Table
+          }
 
-      - name: 🐳 Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: 🐳 Docker version (PowerShell)
+        shell: pwsh
+        run: docker version
 
-      - name: ⚙️ Build and run with Docker Compose
+      - name: 🐳 Docker Compose version (PowerShell)
+        shell: pwsh
+        run: docker-compose version
+
+      - name: ⚙️ Build and run with Docker Compose (PowerShell)
+        shell: pwsh
         run: |
           docker-compose down --volumes --remove-orphans
           docker-compose up --build --abort-on-container-exit
+
+      - name: 🐳 Debug logs if container failed (PowerShell)
+        if: failure()
+        shell: pwsh
+        run: docker-compose logs

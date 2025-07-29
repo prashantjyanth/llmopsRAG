@@ -19,7 +19,7 @@ jobs:
             touch "$d/.gitkeep"
           done
 
-      - name: 🧪 Debug: Check folders before mount
+      - name: 🧪 Debug- Check folders before mount
         run: |
           echo "Checking folder contents:"
           for d in testing_data prompts configs logs best_model best_prompt; do

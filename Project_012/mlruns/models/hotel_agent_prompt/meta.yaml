@@ -1,0 +1,8 @@
+aliases:
+  production: '1'
+creation_timestamp: 1756089950072
+deployment_job_id: null
+deployment_job_state: null
+description: ''
+last_updated_timestamp: 1756089967646
+name: hotel_agent_prompt

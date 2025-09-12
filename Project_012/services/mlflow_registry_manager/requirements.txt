@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-multipart
+PyYAML
+pydantic
+mlflow>=2.14.3
+prometheus-fastapi-instrumentator
+langchain
+langchain_core

@@ -1,0 +1,12 @@
+{
+    "flight_agent": {
+        "model": "llama3-8b-8192",
+        "prompt_version": 2,
+        "avg_score": 0.30000000000000004
+    },
+    "hotel_agent": {
+        "model": "llama3-70b-8192",
+        "prompt_version": 1,
+        "avg_score": 0.63333
+    }
+}

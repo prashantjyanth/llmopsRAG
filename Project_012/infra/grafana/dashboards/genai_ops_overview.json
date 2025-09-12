@@ -1,0 +1,136 @@
+{
+  "id": null,
+  "title": "GenAI Ops Overview",
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 11,
+  "panels": [
+    {
+      "type": "graph",
+      "title": "p95 Workflow Latency (seconds)",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(workflow_latency_seconds_bucket[5m])) by (le))",
+          "legendFormat": "p95 latency"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 0 }
+    },
+    {
+      "type": "stat",
+      "title": "Total Workflow Runs",
+      "targets": [
+        { "expr": "increase(workflow_runs_total[5m])" }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Total Workflow Errors",
+      "targets": [
+        { "expr": "increase(workflow_errors_total[5m])" }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Active Workflow Threads",
+      "targets": [
+        { "expr": "workflow_active_threads" }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Total Workflow Tokens (last 5m)",
+      "targets": [
+        { "expr": "increase(workflow_total_tokens_sum[5m])" }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 8 }
+    },
+    {
+      "type": "stat",
+      "title": "Avg Prompt Tokens",
+      "targets": [
+        { "expr": "rate(workflow_prompt_tokens_sum[5m]) / rate(workflow_prompt_tokens_count[5m])" }
+      ],
+      "gridPos": { "h": 4, "w": 8, "x": 0, "y": 12 }
+    },
+    {
+      "type": "stat",
+      "title": "Avg Completion Tokens",
+      "targets": [
+        { "expr": "rate(workflow_completion_tokens_sum[5m]) / rate(workflow_completion_tokens_count[5m])" }
+      ],
+      "gridPos": { "h": 4, "w": 8, "x": 8, "y": 12 }
+    },
+    {
+      "type": "stat",
+      "title": "Avg Total Tokens",
+      "targets": [
+        { "expr": "rate(workflow_total_tokens_sum[5m]) / rate(workflow_total_tokens_count[5m])" }
+      ],
+      "gridPos": { "h": 4, "w": 8, "x": 16, "y": 12 }
+    },
+    {
+      "type": "graph",
+      "title": "Agent Latency (p95 seconds)",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(agent_latency_seconds_bucket[5m])) by (agent_name, le))",
+          "legendFormat": "{{agent_name}}"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 16 }
+    },
+    {
+      "type": "table",
+      "title": "Agent Runs (last 5m)",
+      "targets": [
+        {
+          "expr": "increase(agent_runs_total{agent_name=~\"flight_agent|hotel_agent\"}[5m])",
+          "legendFormat": "{{agent_name}}"
+        }
+      ],
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 24 }
+    },
+    {
+      "type": "table",
+      "title": "Agent Errors (last 5m)",
+      "targets": [
+        {
+          "expr": "increase(agent_errors_total{agent_name=~\"flight_agent|hotel_agent\"}[5m])",
+          "legendFormat": "{{agent_name}}"
+        }
+      ],
+      "gridPos": { "h": 6, "w": 12, "x": 12, "y": 24 }
+    },
+    {
+      "type": "graph",
+      "title": "Agent Tokens Used (avg last 5m)",
+      "targets": [
+        {
+          "expr": "rate(agent_tokens_used_sum[5m]) / rate(agent_tokens_used_count[5m])",
+          "legendFormat": "{{agent_name}} avg tokens"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 30 }
+    },
+    {
+      "type": "stat",
+      "title": "Orchestrator Uptime",
+      "targets": [
+        { "expr": "up{job=\"orchestrator\"}" }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 38 }
+    },
+    {
+      "type": "stat",
+      "title": "Orchestrator Health",
+      "targets": [
+        { "expr": "orchestrator_health" }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 38 }
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+# 🧑‍✈️ Multi-Agent Workflow with Flight & Hotel Booking  
+
+This project implements a **LangGraph + LangChain** multi-agent system with support for **flight booking, hotel booking, and workflow orchestration**.  
+It integrates:  
+- **Custom ReAct Agents** with tool access (SQL, DB operations).  
+- **Workflow orchestration** using `WorkflowBuilder`.  
+- **Monitoring** via **Prometheus** and **MLflow**.  
+- **Persistence** with **SQLite databases** (flights, hotels, bookings).  
+
+---
+
+## 📂 Project Structure  
+
+```
+.
+├── core/
+│   ├── workflow_builder.py   # Workflow orchestration and supervisor
+│   ├── agent_builder.py      # Configurable ReAct agent class
+│   ├── tools_builder.py      # Flight + Hotel booking tools
+│
+├── configs/
+│   ├── workflow.yaml         # Workflow configuration
+│   ├── agents.yaml           # Agents definition (names, tools, prompts)
+│   └── prompts.yaml          # Prompts if not loaded from MLflow
+│
+├── databases/                # SQLite DBs (flights, hotels, bookings)
+├── libs/
+│   └── mlflow_utils.py       # MLflow logging helpers
+├── docker-compose.yml
+├── Dockerfile
+└── README.md
+```
+
+---
+
+## ⚙️ Setup  
+
+### 1. Install dependencies (local)  
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Environment Variables  
+Create a `.env` file with:  
+```env
+GROQ_API_KEY=your_groq_api_key
+MLFLOW_TRACKING_URI=http://mlflow:5000
+MLFLOW_EXPERIMENT=genai_ops_demo
+```
+
+### 3. Initialize databases (only first run)  
+```bash
+python -c "from core.tools_builder import init_flight_bookings_db, init_hotel_bookings_db; print(init_flight_bookings_db()); print(init_hotel_bookings_db())"
+```
+
+---
+
+## 🚀 Quickstart Demo (5 minutes)  
+
+Follow these steps to **book a flight, check status, cancel it, and query hotels**.  
+
+### Step 1 – Start the workflow  
+```bash
+python core/workflow_builder.py
+```
+
+### Step 2 – Search flights  
+```
+You: Find me a flight from Delhi to Mumbai on 2025-09-01
+Response: [
+  {
+    "flight_id": "AI202",
+    "departure_airport": "DEL",
+    "arrival_airport": "BOM",
+    "airline": "Air India",
+    ...
+  }
+]
+```
+
+### Step 3 – Book a flight  
+```
+You: Book flight AI202 for John Doe, email john@example.com, phone 9998887777
+Response: "Booking BK202508261200ABCD saved successfully."
+```
+
+### Step 4 – Check booking status  
+```
+You: What is the status of my booking BK202508261200ABCD?
+Response: {
+  "booking_id": "BK202508261200ABCD",
+  "name": "John Doe",
+  "status": "Confirmed",
+  ...
+}
+```
+
+### Step 5 – Cancel booking  
+```
+You: Cancel booking BK202508261200ABCD
+Response: "Booking BK202508261200ABCD cancelled."
+```
+
+### Step 6 – Search hotels  
+```
+You: Show me hotels in Mumbai
+Response: [
+  {
+    "hotel_name": "Taj Mumbai",
+    "address": "Apollo Bandar, Colaba",
+    "phone": "022-6665-1234",
+    "rooms": 120
+  },
+  ...
+]
+```
+
+🎉 That’s it! You’ve tested the **entire workflow** in under 5 minutes.  
+
+---
+
+## 🐳 Docker Deployment  
+
+You can run everything with **Docker Compose**.  
+
+### 1. Dockerfile (for workflow service)  
+```dockerfile
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python", "core/workflow_builder.py"]
+```
+
+### 2. docker-compose.yml  
+```yaml
+version: "3.9"
+
+services:
+  workflow:
+    build: .
+    container_name: workflow_service
+    env_file: .env
+    volumes:
+      - ./databases:/app/databases
+    ports:
+      - "8000:8000"   # FastAPI endpoints (if used)
+      - "9090:9090"   # Prometheus scrape port
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:latest
+    container_name: mlflow
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:///mlflow.db
+      --default-artifact-root /mlflow/artifacts
+      --host 0.0.0.0
+      --port 5000
+    volumes:
+      - ./mlruns:/mlflow
+    ports:
+      - "5000:5000"
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9091:9090"
+```
+
+### 3. Prometheus config (`prometheus.yml`)  
+```yaml
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "workflow"
+    static_configs:
+      - targets: ["workflow:9090"]
+```
+
+### 4. Run all services  
+```bash
+docker-compose up --build
+```
+
+### 5. Access services  
+- **Workflow** → `http://localhost:8000`  
+- **MLflow UI** → `http://localhost:5000`  
+- **Prometheus** → `http://localhost:9091`  
+
+---
+
+## 📊 Monitoring  
+
+- **Prometheus** collects:
+  - `workflow_runs_total`  
+  - `workflow_errors_total`  
+  - `workflow_latency_seconds`  
+  - `workflow_active_threads`  
+
+- **MLflow** logs:
+  - `agent_name`, `model`, `latency`, `tokens`, `response_length`.  
+
+---
+
+## ✅ Roadmap  
+
+- [ ] Add car rentals & food ordering agents  
+- [ ] Grafana dashboards (next to Prometheus)  
+- [ ] Kubernetes Helm charts for scaling  

@@ -1,0 +1,16 @@
+﻿agent_name,question,expected,context
+flight_agent,show me available flights traveling from new york to seattle on 15 aug 2015,"Got it! To proceed, I’ll need the departure date in the required DD/MM/YYYY format. Could you please confirm the date as 15/08/2015?",
+flight_agent,hi,"Hello! ?? How can I assist you today—perhaps with a flight or hotel booking, or anything else you need?",
+flight_agent,show me available flights traveling from new york to seattle on 15/08/2015,Here are the flight options again with their Flight IDs ,"Flight ID	Airline	Dep?Time	Arr?Time
+1531	United (UA)	07:00	10:03
+17	Alaska (AS)	07:05	10:00
+422	Delta (DL)	07:10	10:19
+467	Delta (DL)	10:45	13:49
+419	Delta (DL)	15:50	19:15
+1560	United (UA)	16:59	20:11
+11	Alaska (AS)	17:20	20:50
+263	JetBlue (B6)	17:36	20:59
+1922	United (UA)	18:29	21:37
+45	American (AA)	18:30	22:05
+427	Delta (DL)	18:50	22:21
+408	Delta (DL)	21:00	00:24 (next day)"

@@ -1,0 +1,69 @@
+{
+  "title": "GenAI Ops Overview",
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 2,
+  "panels": [
+    {
+      "type": "graph",
+      "title": "p95 Orchestrator Latency (seconds)",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(orchestrator_latency_seconds_bucket[5m])) by (le))",
+          "legendFormat": "p95 latency"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Last Tokens Used",
+      "targets": [
+        {
+          "expr": "orchestrator_tokens_last"
+        }
+      ],
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 0,
+        "y": 8
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Last Cost (USD)",
+      "targets": [
+        {
+          "expr": "orchestrator_cost_last_usd"
+        }
+      ],
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 8,
+        "y": 8
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Last Total Latency (seconds)",
+      "targets": [
+        {
+          "expr": "orchestrator_latency_last_seconds"
+        }
+      ],
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 16,
+        "y": 8
+      }
+    }
+  ]
+}

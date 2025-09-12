@@ -1,0 +1,75 @@
+apiVersion: 1
+groups:
+  - orgId: 1
+    name: orchestrator_alerts
+    folder: "Alerts"
+    interval: 30s
+    rules:
+      - uid: orch-health
+        title: Orchestrator Health Down
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus
+            model:
+              expr: orchestrator_health == 0
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: A
+        noDataState: Alerting
+        execErrState: Alerting
+        for: 30s
+        annotations:
+          summary: "Orchestrator health is down"
+          description: "orchestrator_health reported 0 for >30s"
+        labels:
+          severity: critical
+
+      - uid: workflow-latency
+        title: Workflow Latency High
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus
+            model:
+              expr: histogram_quantile(0.95, sum(rate(workflow_latency_seconds_bucket[5m])) by (le)) > 5
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: A
+        noDataState: Alerting
+        execErrState: Alerting
+        for: 2m
+        annotations:
+          summary: "Workflow latency high"
+          description: "p95 workflow latency > 5s"
+        labels:
+          severity: critical
+
+      - uid: agent-error-rate
+        title: Agent Error Rate High
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus
+            model:
+              expr: rate(agent_errors_total[5m]) / rate(agent_runs_total[5m]) > 0.2
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: A
+        noDataState: Alerting
+        execErrState: Alerting
+        for: 2m
+        annotations:
+          summary: "High agent error rate"
+          description: "Agent error rate exceeded 20%"
+        labels:
+          severity: warning

@@ -1,0 +1,7 @@
+{
+    "flight_agent": {
+        "model": "openai/gpt-oss-120b",
+        "prompt_version": 2,
+        "avg_score": 0.52
+    }
+}

@@ -1,0 +1,16 @@
+workflows:
+  name: flight_hotel_booking_workflow
+  type: supervisor
+  description: A workflow to handle both flight and hotel bookings using multiple agents.
+  agents_config_path: configs/agents.yaml
+  agents:
+    - name: flight_agent
+    - name: hotel_agent
+  output: "last_message"
+  model: openai/gpt-oss-120b
+  prompt_name: supervisor_prompt
+  default_prompt: |
+    You are a helpful assistant for coordinating flight and hotel bookings.
+    - CRITICAL: Always ask the user for any missing details required by the agents and tools.
+    - Never insert blank or null values when making a booking.
+    - Route flight-related queries to the flight_agent and hotel-related queries to the hotel_agent.

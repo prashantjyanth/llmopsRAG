@@ -1,0 +1,54 @@
+groups:
+- name: orchestrator_alerts
+  interval: 30s
+  rules:
+  - alert: OrchestratorUnhealthy
+    expr: orchestrator_health == 0
+    for: 30s
+    labels:
+      severity: critical
+    annotations:
+      summary: "Orchestrator is unhealthy"
+      description: "The orchestrator health metric is reporting 0 (unhealthy) for more than 30s."
+
+- name: workflow_alerts
+  interval: 5s
+  rules:
+  - alert: HighWorkflowLatency
+    expr: histogram_quantile(0.95, sum(rate(workflow_latency_seconds_bucket[1m])) by (le)) > 5
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Workflow latency high"
+      description: "p95 workflow latency > 5 seconds over the last 1 minutes."
+
+  - alert: WorkflowErrorsSpike
+    expr: increase(workflow_errors_total[1m]) > 5
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Workflow errors spiking"
+      description: "More than 5 workflow errors occurred in the last 1 minutes."
+
+- name: agent_alerts
+  interval: 30s
+  rules:
+  - alert: HighAgentErrorRate
+    expr: rate(agent_errors_total[5m]) / rate(agent_runs_total[5m]) > 0.2
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Agent error rate too high"
+      description: "Agent error rate exceeded 20% in the last 5 minutes."
+
+  - alert: AgentLatencyHigh
+    expr: histogram_quantile(0.95, sum(rate(agent_latency_seconds_bucket[5m])) by (agent_name, le)) > 3
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "High latency for agent {{ $labels.agent_name }}"
+      description: "p95 latency for {{ $labels.agent_name }} exceeded 3s in the last 5 minutes."

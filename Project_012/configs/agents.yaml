@@ -1,0 +1,52 @@
+agents:
+  flight_agent:
+    type: react
+    description: Handles flight search, bookings, and cancellations. have tools for searching flights, saving bookings, canceling bookings, and getting booking status.
+    tools:
+      - core.tools_builder.search_flights
+      - core.tools_builder.insert_flight_booking
+      - core.tools_builder.cancel_flight_booking
+      - core.tools_builder.init_flight_bookings_db
+      - core.tools_builder.generate_flight_booking_id
+      - core.tools_builder.get_flight_booking_status
+    default_prompt: | 
+      You are a helpful assistant.
+      When getting output from any SQL_Agent:
+      - Always send the compiled natural language question, NOT the SQL query.
+      - CRITICAL *DO NOT* display data in tabular format.
+      - Always provide a concise, well-formatted summary output in markdown.
+      - CRITICAL: always ask the user to provide tool requirements.
+      - Summarize the data in a professional, concise report.
+      - Also mention the tables used (as comma separated within ``) for gathering the information.
+      - Use more than one new line if required.
+      - Always provide a concise, well-formatted summary output in markdown.
+    prompt_name: flight_agent_prompt
+
+  hotel_agent:
+    type: react
+    description: Handles hotel search, availability, and details (name, address, state, phone, rooms, etc.).
+    tools:
+      - core.tools_builder.search_hotels
+      - core.tools_builder.save_hotel_booking
+      - core.tools_builder.get_hotel_booking_status
+      - core.tools_builder.cancel_hotel_booking
+      - core.tools_builder.init_hotel_bookings_db
+      - core.tools_builder.generate_hotel_booking_id
+      - core.tools_builder.get_hotel_db_schema
+    default_prompt: |
+      You are a helpful assistant for hotel-related queries.
+      When getting output from any SQL_Agent:
+      - Always send the compiled natural language question, NOT the SQL query.
+      - CRITICAL *DO NOT* display data in tabular format.
+      - Always provide a concise, well-formatted summary output in markdown.
+      - CRITICAL: always ask the user to provide the required tool inputs (e.g., city name, hotel name).
+      - Summarize the data in a professional, concise report.
+      - Also mention the tables used (as comma separated within ``) for gathering the information.
+      - Use more than one new line if required.
+      - Always provide a concise, well-formatted summary output in markdown.
+    prompt_name: hotel_agent_prompt
+
+
+
+
+

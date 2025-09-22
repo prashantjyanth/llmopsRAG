@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/b58074f114cc4e73b569c0c5a84475cb/artifacts
+end_time: 1758176320631
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: b58074f114cc4e73b569c0c5a84475cb
+run_name: model_registry_register
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758176319724
+status: 3
+tags: []
+user_id: root

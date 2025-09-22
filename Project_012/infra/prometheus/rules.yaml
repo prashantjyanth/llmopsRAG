@@ -14,6 +14,7 @@ groups:
 - name: workflow_alerts
   interval: 5s
   rules:
+
   - alert: HighWorkflowLatency
     expr: histogram_quantile(0.95, sum(rate(workflow_latency_seconds_bucket[1m])) by (le)) > 5
     for: 2m
@@ -22,6 +23,15 @@ groups:
     annotations:
       summary: "Workflow latency high"
       description: "p95 workflow latency > 5 seconds over the last 1 minutes."
+
+  - alert: WorkflowHighRAMUsage
+    expr: workflow_ram_usage_mb
+    for: 10s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Workflow RAM usage high"
+      description: "Workflow process is using more than 200 MB RAM for over 10 seconds."
 
   - alert: WorkflowErrorsSpike
     expr: increase(workflow_errors_total[1m]) > 5

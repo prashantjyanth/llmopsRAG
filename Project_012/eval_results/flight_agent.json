@@ -1,0 +1,12 @@
+{
+  "agent_name": "flight_agent",
+  "best_model": "openai_gpt-oss-120b",
+  "best_prompt_version": "4",
+  "metrics": {
+    "correctness": 0.9083333333333332,
+    "faithfulness": 0.65,
+    "relevancy": 0.8833333333333333,
+    "latency": 74.59367791811626
+  },
+  "evaluation_timestamp": 1758183547
+}

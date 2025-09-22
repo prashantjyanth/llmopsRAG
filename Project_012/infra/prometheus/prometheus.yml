@@ -9,7 +9,7 @@ scrape_configs:
   - job_name: orchestrator
     static_configs: [{ targets: ["orchestrator:8000"]}]
     metrics_path: /metrics
-    scrape_interval: 5s
+    scrape_interval: 2s
 
   # - job_name: api_gateway
   #   static_configs: [{ targets: ["api-gateway:8080"] }]
@@ -56,9 +56,9 @@ scrape_configs:
     scrape_interval: 5s
 
   - job_name: evaluation
-    static_configs: [{ targets: ["evaluation:8101"] }]
+    static_configs: [{ targets: ["evaluation:8111"] }]
     metrics_path: /metrics
-    scrape_interval: 5s
+    scrape_interval: 2s
 
   # Infrastructure services
   - job_name: prometheus

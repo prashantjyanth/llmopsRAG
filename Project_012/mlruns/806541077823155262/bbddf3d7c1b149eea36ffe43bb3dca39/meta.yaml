@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/bbddf3d7c1b149eea36ffe43bb3dca39/artifacts
+end_time: 1758097443925
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: bbddf3d7c1b149eea36ffe43bb3dca39
+run_name: hotel_agent_llama-3.1-8b-instant_v2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758096960853
+status: 3
+tags: []
+user_id: root

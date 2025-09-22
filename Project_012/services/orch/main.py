@@ -1,16 +1,4 @@
-# builder = WorkflowBuilder()
 
-# # Test the workflow with a sample input
-# thread_id = "test_conversation"
-# print(f"\n🧪 Testing conversation memory (Thread: {thread_id})...")
-# # First interaction
-# while True:
-#     user_input = input("You: ").strip()
-#     if user_input.lower() in ['quit', 'exit']:
-#         print("👋 Goodbye!")
-#         break
-#     response = builder.run(user_input, thread_id)
-#     print(f"Response: {response['messages']}")
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from core.workflow_builder import WorkflowBuilder

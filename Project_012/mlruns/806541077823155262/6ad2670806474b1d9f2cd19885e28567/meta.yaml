@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/6ad2670806474b1d9f2cd19885e28567/artifacts
+end_time: 1758094515866
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: 6ad2670806474b1d9f2cd19885e28567
+run_name: flight_agent_llama-3.1-8b-instant_v4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758094242521
+status: 3
+tags: []
+user_id: root

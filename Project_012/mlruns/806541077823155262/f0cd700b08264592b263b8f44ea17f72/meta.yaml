@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/f0cd700b08264592b263b8f44ea17f72/artifacts
+end_time: 1758182227065
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: f0cd700b08264592b263b8f44ea17f72
+run_name: flight_agent_openai_gpt-oss-120b_v4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758181666066
+status: 3
+tags: []
+user_id: root

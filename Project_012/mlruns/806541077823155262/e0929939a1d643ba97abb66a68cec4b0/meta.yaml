@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/e0929939a1d643ba97abb66a68cec4b0/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: e0929939a1d643ba97abb66a68cec4b0
+run_name: ambitious-yak-782
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758094518086
+status: 1
+tags: []
+user_id: root

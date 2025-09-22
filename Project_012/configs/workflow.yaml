@@ -7,7 +7,7 @@ workflows:
     - name: flight_agent
     - name: hotel_agent
   output: "last_message"
-  model: openai/gpt-oss-120b
+  model: openai/gpt-oss-20b
   prompt_name: supervisor_prompt
   default_prompt: |
     You are a helpful assistant for coordinating flight and hotel bookings.

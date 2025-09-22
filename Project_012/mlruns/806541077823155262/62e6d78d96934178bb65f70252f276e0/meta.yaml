@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/62e6d78d96934178bb65f70252f276e0/artifacts
+end_time: 1758185289117
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: 62e6d78d96934178bb65f70252f276e0
+run_name: workflow_trace
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758185286337
+status: 3
+tags: []
+user_id: root

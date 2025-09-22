@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/54f52f31bb65443e9e0681d6688b3a3a/artifacts
+end_time: 1758182719521
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: 54f52f31bb65443e9e0681d6688b3a3a
+run_name: flight_agent_run_attempt1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758182701700
+status: 4
+tags: []
+user_id: root

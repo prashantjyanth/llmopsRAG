@@ -1,65 +1,8 @@
-# version: "3.9"
 
-# services:
-#   mlflow:
-#     image: ghcr.io/mlflow/mlflow:latest
-#     command: >
-#       mlflow server --host 0.0.0.0 --port 5000
-#       --backend-store-uri /mlruns --default-artifact-root /mlruns
-#     ports:
-#       - "5000:5000"
-#     volumes:
-#       - ./mlruns:/mlruns
-#     networks:
-#       - project_net
-
-#   orchestrator:
-#     build: ./services/orch
-#     environment:
-#       - MLFLOW_TRACKING_URI=http://mlflow:5000   # 👈 resolves via service name
-#       - EXPERIMENT=genai_ops_demo
-#       - APP_CONFIG=/app/configs/workflow.yaml
-#       # Uncomment and set these if needed:
-#       # - LLM_PROVIDER=openai
-#       # - LLM_MODEL=gpt-4o-mini
-#       # - RAG_URL=http://rag:8100
-#     volumes:
-#       - ./configs:/app/configs:ro
-#       - ./libs:/app/libs:ro
-#       - ./core:/app/core:ro
-#       - ./databases:/app/databases:ro
-#     ports:
-#       - "8000:8000"
-#     env_file:
-#       - .env
-#     networks:
-#       - project_net
-#     healthcheck:
-#       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-#       interval: 10s
-#       timeout: 5s
-#       retries: 5
-
-#   ui:
-#     build: ./services/ui
-#     ports:
-#       - "8501:8501"
-#     env_file:
-#       - .env
-#     environment:
-#       - API_URL=http://orchestrator:8000   # 👈 fixed so UI talks to orchestrator
-#     depends_on:
-#       orchestrator:
-#         condition: service_healthy
-#     networks:
-#       - project_net
-
-# networks:
-#   project_net:
-#     driver: bridge
 version: "3.9"
-
+# _________________________Services_________________________
 services:
+# _______________________MLflow Tracking Server_________________________
   mlflow:
     image: ghcr.io/mlflow/mlflow:latest   # MLflow image
     command: >
@@ -70,9 +13,9 @@ services:
     ports:
       - "5000:5000"                       # expose MLflow UI at http://localhost:5000
     volumes:
-      - ./mlruns:/mlruns                  # persist all runs/artifacts to host ./mlruns
+      - ./mlruns:/mlruns                   # persist all runs/artifacts to host ./mlruns
 
-
+# _____________________Orchestrator_________________________
   orchestrator:
     build: ./services/orch
     environment:
@@ -85,6 +28,7 @@ services:
       - ./core:/app/core
       - ./databases:/app/databases
       - ./checkpoints:/checkpoints   # ✅ SQLite checkpoints mounted
+      - ./eval_results:/app/eval_results   # ✅ persist evaluation results
     ports:
       - "8001:8001"
       - "8000:8000"   # ✅ expose Prometheus metrics
@@ -93,12 +37,12 @@ services:
       - .env
     depends_on:
       - mlflow
-
+# _____________________Evaluation Service_________________________
   evaluation:
     build: ./services/evaluation        # 👈 your new service
-    container_name: evaluation_service
     ports:
       - "8101:8101"                    # host:container (maps service to localhost:8101)
+      - "8111:8111"                    # host:container (maps Prometheus metrics to localhost:8111)
     environment:
       - MLFLOW_TRACKING_URI=http://mlflow:5000
       - EXPERIMENT=genai_ops_demo
@@ -108,6 +52,7 @@ services:
       - ./libs:/app/libs
       - ./core:/app/core
       - ./databases:/app/databases
+      - ./eval_results:/app/eval_results   # persist evaluation results
     env_file:
       - .env
     depends_on:
@@ -117,7 +62,7 @@ services:
       interval: 15s
       timeout: 5s
       retries: 3
-
+# _____________________Streamlit UI_________________________
   ui:
     build: ./services/ui
     ports:
@@ -130,14 +75,7 @@ services:
       - .env
     depends_on:
       - orchestrator
-  # governance:
-  #   build: ./services/governance_gateway
-  #   ports: ["8200:8200"]
-  #   volumes:
-  #   - ./configs:/app/configs:ro
-  #   - ./libs:/app/libs:ro
-
-
+# _____________________Prometheus & Grafana_________________________
   prometheus:
     image: prom/prometheus:latest
     command: --config.file=/etc/prometheus/prometheus.yml
@@ -153,6 +91,13 @@ services:
     ports:
       - "3000:3000"
     environment:
+      - GF_SMTP_ENABLED=true
+      - GF_SMTP_HOST=smtp.gmail.com:587
+      - GF_SMTP_USER=prashant.jyanth@gmail.com
+      - GF_SMTP_PASSWORD=agmn pkqf jiwz cdka
+      - GF_SMTP_FROM_ADDRESS=prashant.jyanth@gmail.com
+      - GF_SMTP_FROM_NAME=Grafana
+      - GF_SMTP_SKIP_VERIFY=true
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_UNIFIED_ALERTING_ENABLED=true
@@ -166,24 +111,7 @@ services:
       - ./infra/grafana/dashboards:/var/lib/grafana/dashboards
     depends_on:
       - prometheus
-  # transformer_trainer:
-  #   build: ./services/transformer_trainer
-  #   container_name: transformer_trainer_service
-  #   volumes:
-  #     - ./services/transformer_trainer:/app
-  #   environment:
-  #     - TRANSFORMERS_CACHE=/app/.cache
-  #   ports:
-  #     - "8600:8600"
-  #   transformer_trainer:
-  #     build: ./services/transformer_trainer
-  #     container_name: transformer_trainer_service
-  #     volumes:
-  #       - ./services/transformer_trainer:/app
-  #     environment:
-  #       - TRANSFORMERS_CACHE=/app/.cache
-  #     ports:
-  #       - "8600:8600"
+# _____________________MLflow Registry Manager_________________________
   mlflow_registry_manager:
     build: ./services/mlflow_registry_manager
     container_name: mlflow_registry_manager_service
@@ -200,20 +128,4 @@ services:
       - .env
     depends_on:
       - mlflow
-  # prompt_registry:
-  #   build: ./services/prompt_registry
-  #   ports:
-  #     - "8181:8181"
-  #   volumes:
-  #     - ./prompts:/app/prompts:ro
-  #   env_file:
-  #     - .env
 
-  # rag:
-  #   build: ./services/rag
-  #   ports:
-  #     - "8100:8100"
-  #   volumes:
-  #     - ./rag_data:/app/rag_data:ro
-  #   env_file:
-  #     - .env

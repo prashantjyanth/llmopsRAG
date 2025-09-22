@@ -1,6 +1,8 @@
 aliases:
-  production: '4'
+  production: '3'
 creation_timestamp: 1757482308648
+deployment_job_id: null
+deployment_job_state: null
 description: ''
-last_updated_timestamp: 1757569786174
+last_updated_timestamp: 1758185412330
 name: flight_agent_prompt

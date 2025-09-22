@@ -1,6 +1,8 @@
 aliases:
-  production: '6'
+  production: '5'
 creation_timestamp: 1757482247137
+deployment_job_id: null
+deployment_job_state: null
 description: ''
-last_updated_timestamp: 1757565455030
+last_updated_timestamp: 1758185030441
 name: supervisor_prompt

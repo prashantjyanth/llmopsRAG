@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/3f7075fc717244c9a600fa6a90864929/artifacts
+end_time: 1758097305054
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: 3f7075fc717244c9a600fa6a90864929
+run_name: hotel_agent_run_attempt1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758097260377
+status: 3
+tags: []
+user_id: root

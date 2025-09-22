@@ -1,0 +1,12 @@
+{
+  "agent_name": "hotel_agent",
+  "best_model": "llama-3.1-8b-instant",
+  "best_prompt_version": "2",
+  "metrics": {
+    "correctness": 0.9199999999999999,
+    "faithfulness": 1.0,
+    "relevancy": 0.78,
+    "latency": 67.76117672920228
+  },
+  "evaluation_timestamp": 1758097444
+}

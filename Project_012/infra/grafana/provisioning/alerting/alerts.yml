@@ -7,7 +7,7 @@ groups:
     rules:
       - uid: orch-health
         title: Orchestrator Health Down
-        condition: C
+        condition: A
         data:
           - refId: A
             relativeTimeRange:
@@ -30,7 +30,7 @@ groups:
 
       - uid: workflow-latency
         title: Workflow Latency High
-        condition: C
+        condition: A
         data:
           - refId: A
             relativeTimeRange:
@@ -53,7 +53,7 @@ groups:
 
       - uid: agent-error-rate
         title: Agent Error Rate High
-        condition: C
+        condition: A
         data:
           - refId: A
             relativeTimeRange:
@@ -71,5 +71,28 @@ groups:
         annotations:
           summary: "High agent error rate"
           description: "Agent error rate exceeded 20%"
+        labels:
+          severity: warning
+
+      - uid: workflow-ram-usage
+        title: Workflow RAM Usage High
+        condition: A
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus
+            model:
+              expr: workflow_ram_usage_mb > 200
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: A
+        noDataState: Alerting
+        execErrState: Alerting
+        for: 1m
+        annotations:
+          summary: "Workflow RAM usage high"
+          description: "Workflow process is using more than 200 MB RAM for over 1 minute."
         labels:
           severity: warning

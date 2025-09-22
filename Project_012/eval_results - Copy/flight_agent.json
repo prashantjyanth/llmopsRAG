@@ -1,0 +1,12 @@
+{
+  "agent_name": "flight_agent",
+  "best_model": "llama-3.1-8b-instant",
+  "best_prompt_version": "1",
+  "metrics": {
+    "correctness": 0.5333333333333333,
+    "faithfulness": 0.7999999999999999,
+    "relevancy": 0.9,
+    "latency": 3.9348124663035073
+  },
+  "evaluation_timestamp": 1758097430
+}

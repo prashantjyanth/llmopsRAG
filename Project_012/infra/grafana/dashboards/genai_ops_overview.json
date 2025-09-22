@@ -3,7 +3,7 @@
   "title": "GenAI Ops Overview",
   "timezone": "browser",
   "schemaVersion": 36,
-  "version": 11,
+  "version": 12,
   "panels": [
     {
       "type": "graph",
@@ -20,7 +20,7 @@
       "type": "stat",
       "title": "Total Workflow Runs",
       "targets": [
-        { "expr": "increase(workflow_runs_total[5m])" }
+        { "expr": "round(increase(workflow_runs_total[5m]))" }
       ],
       "gridPos": { "h": 4, "w": 6, "x": 0, "y": 8 }
     },
@@ -28,7 +28,7 @@
       "type": "stat",
       "title": "Total Workflow Errors",
       "targets": [
-        { "expr": "increase(workflow_errors_total[5m])" }
+        { "expr": "round(increase(workflow_errors_total[5m]))" }
       ],
       "gridPos": { "h": 4, "w": 6, "x": 6, "y": 8 }
     },
@@ -44,7 +44,7 @@
       "type": "stat",
       "title": "Total Workflow Tokens (last 5m)",
       "targets": [
-        { "expr": "increase(workflow_total_tokens_sum[5m])" }
+        { "expr": "round(increase(workflow_total_tokens_sum[5m]))" }
       ],
       "gridPos": { "h": 4, "w": 6, "x": 18, "y": 8 }
     },
@@ -88,7 +88,7 @@
       "title": "Agent Runs (last 5m)",
       "targets": [
         {
-          "expr": "increase(agent_runs_total{agent_name=~\"flight_agent|hotel_agent\"}[5m])",
+          "expr": "round(increase(agent_runs_total{agent_name=~\"flight_agent|hotel_agent\"}[5m]))",
           "legendFormat": "{{agent_name}}"
         }
       ],
@@ -99,7 +99,7 @@
       "title": "Agent Errors (last 5m)",
       "targets": [
         {
-          "expr": "increase(agent_errors_total{agent_name=~\"flight_agent|hotel_agent\"}[5m])",
+          "expr": "round(increase(agent_errors_total{agent_name=~\"flight_agent|hotel_agent\"}[5m]))",
           "legendFormat": "{{agent_name}}"
         }
       ],
@@ -131,6 +131,53 @@
         { "expr": "orchestrator_health" }
       ],
       "gridPos": { "h": 4, "w": 6, "x": 6, "y": 38 }
+    },
+    {
+      "type": "stat",
+      "title": "Workflow CPU Usage (%)",
+      "targets": [
+        { "expr": "workflow_cpu_usage_percent" }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 38 },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "orientation": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "textMode": "auto",
+        "unit": "percent"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Workflow RAM Usage (MB)",
+      "targets": [
+        { "expr": "workflow_ram_usage_mb" }
+      ],
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 38 }
+    },
+    {
+      "type": "table",
+      "title": "Evaluation Summary (Best per Agent)",
+      "targets": [
+        {
+          "expr": "eval_summary",
+          "legendFormat": "{{agent_name}} | {{best_model}} | {{best_prompt_version}} | {{metric}}"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 42 },
+      "options": {
+        "showHeader": true
+      },
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "mode": "labels"
+          }
+        }
+      ]
     }
   ]
 }

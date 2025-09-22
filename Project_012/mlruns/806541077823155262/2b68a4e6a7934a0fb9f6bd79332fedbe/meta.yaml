@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/2b68a4e6a7934a0fb9f6bd79332fedbe/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: 2b68a4e6a7934a0fb9f6bd79332fedbe
+run_name: gaudy-finch-991
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758183547722
+status: 1
+tags: []
+user_id: root

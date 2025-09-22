@@ -23,6 +23,7 @@ ENV GIT_PYTHON_REFRESH=quiet
 COPY . .
 
 EXPOSE 8001
+EXPOSE 8111
 
 # Healthcheck for container orchestration
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \

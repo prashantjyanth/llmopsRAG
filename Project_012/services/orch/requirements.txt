@@ -12,3 +12,6 @@ langgraph.prebuilt==0.5.2
 langchain_core==0.3.68
 uuid
 prometheus_client
+langsmith
+psutil
+

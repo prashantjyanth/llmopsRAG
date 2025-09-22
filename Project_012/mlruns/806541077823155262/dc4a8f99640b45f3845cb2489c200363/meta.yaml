@@ -1,0 +1,14 @@
+artifact_uri: /mlruns/806541077823155262/dc4a8f99640b45f3845cb2489c200363/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '806541077823155262'
+lifecycle_stage: active
+run_id: dc4a8f99640b45f3845cb2489c200363
+run_name: able-cat-251
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758097444720
+status: 1
+tags: []
+user_id: root
